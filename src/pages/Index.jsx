@@ -1,15 +1,20 @@
-// Complete the Index page component here
-// Use chakra-ui
-import { Button } from "@chakra-ui/react"; // example
-import { FaPlus } from "react-icons/fa"; // example - use react-icons/fa for icons
+import React, { useState } from "react";
+import { Container, Text } from "@chakra-ui/react";
+import FileUpload from "../components/FileUpload";
 
 const Index = () => {
-  // TODO: Create the website here!
+  const [uploadedData, setUploadedData] = useState(null);
+
+  const handleUpload = (data) => {
+    setUploadedData(data);
+  };
+
   return (
-    <Button>
-      Hello world! <FaPlus />
-    </Button>
-  ); // example
+    <Container maxW="container.lg">
+      <FileUpload onUpload={handleUpload} />
+      {uploadedData && <Text mt={8}>File uploaded and parsed successfully!</Text>}
+    </Container>
+  );
 };
 
 export default Index;
